@@ -1,0 +1,2 @@
+schema base mongo db (fichier.coffee)
+

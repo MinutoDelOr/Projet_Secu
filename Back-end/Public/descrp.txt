@@ -1,0 +1,4 @@
+dossier css ==> fichier css
+dossier views ==> fichiers html + fichier angular (js) (un fichier pour app et lautre pour la page revoir doc angular)
+
+

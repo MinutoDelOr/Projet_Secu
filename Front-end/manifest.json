@@ -1,0 +1,26 @@
+{
+"name" :"Video Downloader",
+"version" :"1.2",
+"manifest_version": 2,
+"description" :"Extension trouvant automatiquement les vidéos présentes sur une page web et proposant le téléchargement de ces dernières.",
+"permissions": [
+      "http://*/*",
+      "https://*/*",
+      "cookies"
+],
+"icons" : { "16": "icone.png", "24": "icone.png", "32": "icone.png", "64": "icone.png" },
+"browser_action" :
+  {
+   "default_icon" : "icone.png",
+   "default_popup" :"popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "<all_urls>",
+    "tabs",
+    "storage",
+    "unlimitedStorage"
+  ]
+}
