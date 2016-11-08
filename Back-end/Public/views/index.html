@@ -5,22 +5,93 @@
         <meta charset="utf-8" />
         <title>Titre</title>
         <link rel="stylesheet" href="/static/css/mycss.css" charset="utf-8">
+        <link rel="stylesheet" href="/static/angular-material/angular-material.css">
         <script src="static/angular/angular.min.js"></script>
         <script src="static/angular-animate/angular-animate.min.js"></script>
         <script src="static/angular-aria/angular-aria.min.js"></script>
         <script src="static/angular-material/angular-material.min.js"></script>
         <script src="static/angular-route/angular-route.min.js"></script>
+        <script src="static/angular-messages/angular-messages.js"></script>
+        <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
         <script src="static/js/myjs.js"></script>
+
     </head>
 
     <body ng-app="Application">
-      <div ng-controller="FirstController as ctrl">
-        <div ng-repeat="site in res" style="border: solid black 1px;">
-          <p>URL : {{site.URL}}</p>
-          <p>login : {{site.login}}</p>
-          <p>password : {{site.password}}</p>
-        </div>
+
+
+<div ng-cloak="" class="toolbardemoBasicUsage" ng-app="MyApp">
+<md-content>
+  <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false">
+          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <h2>
+          <span>Toolbar </span>
+        </h2>
+        <span flex=""></span>
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+        </md-button>
       </div>
+    </md-toolbar>
+  </md-content>
+</div>
+    <div ng-cloak="" class="tabsdemoDynamicHeight" ng-controller="FirstController as ctrl">
+        <md-content>
+          <md-tabs md-dynamic-height="" md-border-bottom="">
+            <md-tab label="Facebook">
+              <md-content class="md-padding">
+                  <div ng-repeat="site in resFacebook" style="border: solid black 1px;"  class="row">
+                      <div  flex class="col-xs-4">
+                        <ul>
+                          <li>login : {{site.login}}</li>
+                          <li>password : {{site.password}}</li>
+                        </ul>
+
+                      </div>
+
+                  </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Google">
+              <md-content class="md-padding">
+                <div ng-repeat="site in resGoogle" style="border: solid black 1px;">
+                  <div layout="row">
+                    <div flex>
+                      <ul>
+                        <li>login : {{site.login}}</li>
+                        <li>password : {{site.password}}</li>
+                      </ul>
+                    </div>
+                  </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Autres">
+              <md-content class="md-padding">
+                <div ng-repeat="site in resAutres" style="border: solid black 1px;">
+                  <div layout="row">
+                    <div flex>
+                      <ul>
+                        <li>URL : {{site.URL}}</li>
+                        <li>login : {{site.login}}</li>
+                        <li>password : {{site.password}}</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 fs = require('fs');
-ytdl = require('ytdl-core');
+
 
 exports.test = (req,res) -> res.send('id: ' + req.query.id)
 

@@ -1,21 +1,22 @@
 {
-	"name":"pluggin_keylogger",
-	"description":"plugin chrome dissimulant un keylogger",
-	"version":"0.0.2",
-	"dependencies":{
-		"coffee-script":"latest",
-		"express":"latest",
-		"mongoose":"latest",
-		"angular":"latest",
-		"body-parser" : "latest",
-		"angular-material":"latest",
-		"angular-animate":"latest",
-		"angular-aria":"latest",
-		"angular-route": "latest",
-		"ytdl": "latest",
-		"ytdl-core": "latest"
-	},
-	"scripts":{
-		"start":"coffee -w projet.coffee"
-	}
+  "name": "pluggin_keylogger",
+  "description": "plugin chrome dissimulant un keylogger",
+  "version": "0.0.2",
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-material": "^1.1.1",
+    "angular-route": "latest",
+    "body-parser": "latest",
+    "coffee-script": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "ui-navbar": "^0.5.2",
+    "ytdl": "latest",
+    "ytdl-core": "latest"
+  },
+  "scripts": {
+    "start": "coffee -w projet.coffee"
+  }
 }
