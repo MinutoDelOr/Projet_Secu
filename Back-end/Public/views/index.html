@@ -74,57 +74,147 @@
           <md-tabs md-dynamic-height="" md-border-bottom="">
             <md-tab label="Facebook">
               <md-content class="md-padding">
-                <div ng-controller="ChartController as chart" style="width: 50%; height: auto;" >
-                  <canvas id="myChart" width="100" height="100"></canvas>
-                  </br>
-                </div>
-                <div ng-controller="SiteController as chart" style="width: 50%; height: auto;" >
-                  <canvas id="myChart1" width="100" height="100"></canvas>
-                  </br>
-                  <canvas id="myChart2" width="100" height="100"></canvas>
-                </div>
-                  <div ng-repeat="site in resFacebook" style="border: solid black 1px;"  class="row">
-                      <div  flex class="col-xs-4">
-                        <ul>
-                          <li>login : {{site.login}}</li>
-                          <li>password : {{site.password}}</li>
-                        </ul>
-
-                      </div>
+                  
+                  <div ng-repeat="site in resFacebook" ng-if="$index % 2 == 0" layout="row">
+                    <div flex="25">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resFacebook[$index].login}}</span>
+                            <span class="md-headline">{{resFacebook[$index].password}}</span>
+                            <span class="md-subhead">{{resFacebook[$index].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/fb.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                    <div flex="25" ng-if="resFacebook.length > ($index + 1)">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resFacebook[$index+1].login}}</span>
+                            <span class="md-headline">{{resFacebook[$index+1].password}}</span>
+                            <span class="md-subhead">{{resFacebook[$index+1].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/fb.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                                     
                   </div>
+                  
               </md-content>
             </md-tab>
             <md-tab label="Google">
               <md-content class="md-padding">
-                <div ng-repeat="site in resGoogle" style="border: solid black 1px;">
-                  <div layout="row">
-                    <div flex>
-                      <ul>
-                        <li>login : {{site.login}}</li>
-                        <li>password : {{site.password}}</li>
-                      </ul>
+                  
+                  <div ng-repeat="site in resGoogle" ng-if="$index % 2 == 0" layout="row">
+                    <div flex="25">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resGoogle[$index].login}}</span>
+                            <span class="md-headline">{{resGoogle[$index].password}}</span>
+                            <span class="md-subhead">{{resGoogle[$index].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
                     </div>
+                    <div flex="25" ng-if="resGoogle.length > ($index + 1)">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resGoogle[$index+1].login}}</span>
+                            <span class="md-headline">{{resGoogle[$index+1].password}}</span>
+                            <span class="md-subhead">{{resGoogle[$index+1].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                                     
                   </div>
+                  
+              </md-content>
+            </md-tab>
+            
+
+            <md-tab label="Autres">
+              <md-content class="md-padding">
+                  
+                  <div ng-repeat="site in resAutres" ng-if="$index % 2 == 0" layout="row">
+                    <div flex="25">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resAutres[$index].login}}</span>
+                            <span class="md-headline">{{resAutres[$index].password}}</span>
+                            <span class="md-subhead">{{resFacebook[$index].date}}</span>
+                            <span class="md-subhead">{{resAutres[$index].URL}}</span>
+
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                    <div flex="25" ng-if="resAutres.length > ($index + 1)">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resAutres[$index+1].login}}</span>
+                            <span class="md-headline">{{resAutres[$index+1].password}}</span>
+                            <span class="md-subhead">{{resAutres[$index+1].date}}</span>
+                            <span class="md-subhead">{{resAutres[$index+1].URL}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                                     
+                  </div>
+                  
+              </md-content>
+            </md-tab>
+      
+            <md-tab label="stat">
+              <md-content class="md-padding">
+                <div ng-controller="ChartController as chart" style="width: 50%; height: auto;" >
+                            <canvas id="myChart" width="100" height="100"></canvas>
+                            </br>
+                          </div>
+                          <div ng-controller="SiteController as chart" style="width: 50%; height: auto;" >
+                            <canvas id="myChart1" width="100" height="100"></canvas>
+                            </br>
+                            <canvas id="myChart2" width="100" height="100"></canvas>
                 </div>
               </md-content>
             </md-tab>
-            <md-tab label="Autres">
-              <md-content class="md-padding">
-                <div ng-repeat="site in resAutres" style="border: solid black 1px;">
-                  <div layout="row">
-                    <div flex>
-                      <ul>
-                        <li>URL : {{site.URL}}</li>
-                        <li>login : {{site.login}}</li>
-                        <li>password : {{site.password}}</li>
-                      </ul>
-                    </div>
-                  </div>
 
-                </md-content>
-            </md-tab>
-          </md-tabs>
-        </md-content>
       </div>
 
       <!--<div ng-cloak="" class="tabsdemoDynamicHeight" ng-controller="FirstController as ctrl" ng-show="false">

@@ -27,3 +27,12 @@ p {
   margin: auto;
   margin-left: 15px;
 }
+.card-media {
+  background-color: transparent; 
+  }
+.md-card-image {
+  margin-left: 100px;
+  margin-top: 10px;
+  width: 40%;
+
+}
