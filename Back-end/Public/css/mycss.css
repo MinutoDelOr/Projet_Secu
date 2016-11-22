@@ -10,3 +10,20 @@ p {
       background: white; }
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
+
+#menu_button{
+  margin-left: 25%;
+  margin-right: auto;
+  width: 40%;
+  margin-top:20px;
+}
+
+#item_menu:hover {
+  background: #9FA8DA;
+  display: flex;
+}
+
+#text_menu{
+  margin: auto;
+  margin-left: 15px;
+}

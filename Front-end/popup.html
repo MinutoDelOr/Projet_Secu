@@ -3,35 +3,28 @@
   <head>
     <title>Téléchargement</title>
     <script src="bundle.js"></script>
-    <style>
-    table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-	}
-	th, td {
-    padding: 5px;
-    text-align: left;
-	#fff;
-	}
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" media="all"/>
   </head>
   <body>
-    <h1>YT Donloader</h1>
-    <table style="width:100%">
+    <p>Here you can download directly your video ! </p>
+    <div style="text-align: center; margin-left: 25%;">
+    <table style="width:100%; border-collapse: separate; border-spacing: 10px;">
   <tr>
     <th>Media</th>
-    <th>Format</th> 
+    <th>Format</th>
   </tr>
   <tr>
-    <td><a id="tel" download="" href=""> Video</a></td>
-    <td>720p</td> 
-    
+    <td><button id="tel" download="" href="" type="button" class="btn btn-primary">Video</button></td>
+    <td>720p</td>
+
   </tr>
   <tr>
-    <td><a id="audio" download="" href=""> Audio</a></td> 
+    <td><button id="audio" download="" href="" type="button" class="btn btn-primary">Audio</button></td>
     <td>MP3</td>
   </tr>
 </table>
-     
+</div>
+
   </body>
 </html>
