@@ -18,6 +18,8 @@
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
+            $scope.d = response.data[i].date.split("T");
+            response.data[i].date = $scope.d[0] + " à " + $scope.d[1].split(".")[0];
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.resFacebook.push(response.data[i]);
             } else if (response.data[i].URL.indexOf("amazon") !== -1){
@@ -43,14 +45,15 @@
 
     $scope.tri = function() {
       $scope.resDate = [];
-      $scope.resLogo = [];
+      $scope.resLogo = []
       $http.get("http://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
-            response.data[i].date = response.data[i].date.split("T")[0];
+            $scope.date = response.data[i].date.split("T")[0];
             $scope.dd = $filter('date')($scope.myDate, "yyyy-MM-dd");
-            if(response.data[i].date.indexOf($scope.dd.toString()) > -1){
+            if($scope.date.indexOf($scope.dd.toString()) > -1){
+              response.data[i].date = response.data[i].date.split("T")[1].split(".")[0];
               if(response.data[i].URL.indexOf("facebook") > -1 && $scope.data.cb1 == true){
                 $scope.resDate.push(response.data[i]);
                 $scope.resLogo.push($scope.path1);
