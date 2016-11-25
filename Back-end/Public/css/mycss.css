@@ -28,11 +28,18 @@ p {
   margin-left: 15px;
 }
 .card-media {
-  background-color: transparent; 
+  background-color: transparent;
   }
 .md-card-image {
   margin-left: 100px;
   margin-top: 10px;
   width: 40%;
+}
 
+.md-card-title-media {
+  margin-right: 20px;
+}
+
+.md-headline {
+  font-size: 40px;
 }
