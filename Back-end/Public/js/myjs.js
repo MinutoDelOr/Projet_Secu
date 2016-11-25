@@ -18,8 +18,6 @@
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
-            $scope.tab = response.data[i].date.split("T");
-            response.data[i].date = $scope.tab[0]+ " à " + $scope.tab[1].split(".")[0] ;
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.resFacebook.push(response.data[i]);
             } else if (response.data[i].URL.indexOf("amazon") !== -1){
@@ -30,6 +28,52 @@
         }
       });
   }]);
+
+  app.controller('DateController', ['$http', '$scope', '$filter', function($http,$scope,$filter){
+    $scope.myDate = new Date();
+    $scope.path = "static/img/Zimbra.png";
+    $scope.path1 = "static/img/fb.png";
+    $scope.path2 = "static/img/Amazon.png";
+    $scope.resDate = [];
+    $scope.resLogo = [];
+    $scope.data = {};
+    $scope.data.cb1 = true;
+    $scope.data.cb2 = true;
+    $scope.data.cb3 = true;
+
+    $scope.tri = function() {
+      $scope.resDate = [];
+      $scope.resLogo = [];
+      $http.get("http://127.0.0.1:8080/site")
+      .then(function(response){
+        for(var i = 0; i < response.data.length; i++) {
+          if (typeof response.data[i].URL != 'undefined'){
+            response.data[i].date = response.data[i].date.split("T")[0];
+            $scope.dd = $filter('date')($scope.myDate, "yyyy-MM-dd");
+            if(response.data[i].date.indexOf($scope.dd.toString()) > -1){
+              if(response.data[i].URL.indexOf("facebook") > -1 && $scope.data.cb1 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path1);
+              }
+              if(response.data[i].URL.indexOf("amazon") > -1 && $scope.data.cb2 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path2);
+              }
+              if(response.data[i].URL.indexOf("insa") > -1 && $scope.data.cb3 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path);
+              }
+            }
+          }
+        }
+      });
+
+    };
+
+  }]);
+
+
+
 
   app.controller('SiteController', ['$http', '$scope', function($http,$scope){
 
@@ -222,8 +266,9 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.toggleLeft = buildDelayedToggler('left');
 
 
-    function change_pages(){
-       }  
+    function change_tabs(){
+
+    }
 
     function debounce(func, wait, context) {
        var timer;

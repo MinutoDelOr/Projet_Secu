@@ -240,15 +240,87 @@
                         </md-card-title>
                       </md-card>
                     </div>
-
-
-
                   </div>
-
               </md-content>
             </md-tab>
+            <md-tab label="Tri">
+              <md-content class="md-padding">
+                <div ng-controller="DateController as date">
+                  <div style="margin-left:20%; margin-right:20%; display: inline; text-align: center;">
+                    <md-datepicker ng-model="myDate" md-placeholder="Choisir une date"></md-datepicker>
+                    <div style="margin-left: 5%; display: inline;">
+                      <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="blue">
+                          Facebook : {{ data.cb1 }}
+                      </md-checkbox>
+                      <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" class="blue">
+                          Amazon : {{ data.cb2 }}
+                      </md-checkbox>
+                      <md-checkbox ng-model="data.cb3" aria-label="Checkbox 3" class="blue">
+                          Zimbra : {{ data.cb3 }}
+                      </md-checkbox>
+                     <md-button style="margin-left: 5%;" ng-click="tri()" class="md-raised md-primary">Find</md-button>
+                    </div>
+                  </div>
 
 
+                <div ng-repeat="site in resDate" ng-if="$index % 3 == 0" layout="row">
+                  <div flex="33">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index].login}}</span>
+                          <span class="md-headline">{{resDate[$index].password}}</span>
+                          <span class="md-subhead">{{resDate[$index].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+
+                  <div flex="33" ng-if="resDate.length > ($index + 1)">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index+1].login}}</span>
+                          <span class="md-headline">{{resDate[$index+1].password}}</span>
+                          <span class="md-subhead">{{resDate[$index+1].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+                  <div flex="33" ng-if="resDate.length > ($index + 2)">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index+1].login}}</span>
+                          <span class="md-headline">{{resDate[$index+1].password}}</span>
+                          <span class="md-subhead">{{resDate[$index+1].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+
+              </div>
+
+                </div>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
       </div>
 
 

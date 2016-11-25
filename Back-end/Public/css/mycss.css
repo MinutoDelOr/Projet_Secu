@@ -11,6 +11,11 @@ p {
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
 
+
+md-checkbox.md-checked.blue .md-icon {
+ background-color: rgba(40, 53, 147, 1);
+}
+
 #menu_button{
   margin-left: 25%;
   margin-right: auto;
