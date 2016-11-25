@@ -221,7 +221,7 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 
 
     function change_tabs(){
-
+      
     }
 
     function debounce(func, wait, context) {
