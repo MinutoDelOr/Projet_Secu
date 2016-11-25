@@ -220,9 +220,8 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.toggleLeft = buildDelayedToggler('left');
 
 
-    function change_tabs(){
-
-    }
+    function change_pages(){
+       }  
 
     function debounce(func, wait, context) {
        var timer;
