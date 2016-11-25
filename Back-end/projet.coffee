@@ -2,9 +2,14 @@ express = require 'express'
 path = require 'path'
 mongoose = require 'mongoose'
 get = require  './back-end/get'
+auth = require 'http-auth'
 bodyParser = require 'body-parser'
 app = express()
 
+basic =auth.basic({
+	realm : "Simon Area.",
+	file : __dirname + "/htpasswd"
+});
 #Config du port d'écoute
 app.set "port", 8080
 app.use bodyParser.json()
@@ -31,7 +36,7 @@ app.use (req, res, next) ->
 app.use('/static', express.static(__dirname+'/Public'))
 app.use('/static', express.static(__dirname+'/node_modules'))
 
-app.get '/toto', (req,res) -> res.sendFile path.join __dirname+'/Public/views/index.html'
+app.get '/toto', auth.connect(basic),(req,res) -> res.sendFile path.join __dirname+'/Public/views/index.html'
 app.get '/stat', (req,res) -> res.sendFile path.join __dirname+'/Public/views/stat.html'
 app.get '/get', get.test
 app.post '/json', get.createUser

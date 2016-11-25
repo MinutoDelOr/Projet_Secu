@@ -9,7 +9,7 @@
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
   app.controller('FirstController', ['$http', '$scope', function($http,$scope){
-   
+
       $scope.resFacebook = [];
       $scope.resGoogle = [];
       $scope.resAutres = [];
@@ -221,7 +221,7 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
 
 
     function change_tabs(){
-      
+
     }
 
     function debounce(func, wait, context) {
