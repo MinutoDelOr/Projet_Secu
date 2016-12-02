@@ -11,7 +11,6 @@ p {
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
 
-
 md-checkbox.md-checked.blue .md-icon {
  background-color: rgba(40, 53, 147, 1);
 }
@@ -36,13 +35,14 @@ md-checkbox.md-checked.blue .md-icon {
   background-color: transparent;
   }
 .md-card-image {
-  margin-left: 100px;
+  margin-left: 60px;
   margin-top: 10px;
   width: 40%;
+/*  float: right;*/
 }
 
 .md-card-title-media {
-  margin-right: 20px;
+  float : right;
 }
 
 .md-headline {

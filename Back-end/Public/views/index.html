@@ -14,7 +14,10 @@
         <script src="static/angular-messages/angular-messages.js"></script>
         <script src="static/js/svg-assets-cache.js"></script>
         <script src="static/js/myjs.js"></script>
+        <script src="static/js/mysecondjs.js"></script>
         <script src="static/chart.js/dist/Chart.min.js"></script>
+        <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css"></script>
+
 
     </head>
 
@@ -83,6 +86,9 @@
                             <span class="md-headline">{{resFacebook[$index].login}}</span>
                             <span class="md-headline">{{resFacebook[$index].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index].date}}</span>
+                            </br>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index].login, resFacebook[$index].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
+                        </md-card-title-text>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
@@ -99,6 +105,8 @@
                             <span class="md-headline">{{resFacebook[$index+1].login}}</span>
                             <span class="md-headline">{{resFacebook[$index+1].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index+1].date}}</span>
+                            </br>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+1].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+1].login, resFacebook[$index+1].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
@@ -115,6 +123,8 @@
                             <span class="md-headline">{{resFacebook[$index+2].login}}</span>
                             <span class="md-headline">{{resFacebook[$index+2].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index+2].date}}</span>
+                            </br>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+2].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+2].login, resFacebook[$index+2].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">

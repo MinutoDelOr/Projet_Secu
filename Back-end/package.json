@@ -12,8 +12,10 @@
     "chart.js": "^2.4.0",
     "coffee-script": "latest",
     "express": "latest",
+    "font-awesome": "^4.7.0",
     "http-auth": "^3.1.1",
     "mongoose": "latest",
+    "phantom": "^2.1.21",
     "ui-navbar": "^0.5.2",
     "ytdl": "latest",
     "ytdl-core": "latest"

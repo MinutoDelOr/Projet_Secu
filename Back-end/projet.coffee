@@ -41,6 +41,7 @@ app.get '/stat', (req,res) -> res.sendFile path.join __dirname+'/Public/views/st
 app.get '/get', get.test
 app.post '/json', get.createUser
 app.get '/site', get.retrieve
+app.get '/fb', get.fbConnect
 
 
 #Lancement du serveur

@@ -8,6 +8,30 @@
   $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
+
+  app.controller('ConnexionController', ['$http', '$scope', function($http,$scope){
+    $scope.test_connexion = function(login, password){
+      $scope.icone = document.getElementById(login);
+      $scope.icone.className = "";
+      $scope.icone.className = "fa fa-spin fa-spinner";
+      $scope.url = "http://127.0.0.1:8080/fb?log=" + login + "&pass=" + password;
+      console.log($scope.url);
+      $http.get($scope.url)
+      .then(function(response){
+        console.log ("send");
+        if(response.data.indexOf("false") > -1){
+          $scope.icone.className = "";
+          $scope.icone.className = "fa fa-times";
+        }
+        else{
+          $scope.icone.className = "";
+          $scope.icone.className = "fa fa-check";
+        }
+      });
+    };
+  }]);
+
+
   app.controller('FirstController', ['$http', '$scope', function($http,$scope){
 
       $scope.resFacebook = [];
