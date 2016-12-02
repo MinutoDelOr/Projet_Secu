@@ -5,6 +5,13 @@ get = require  './back-end/get'
 auth = require 'http-auth'
 bodyParser = require 'body-parser'
 app = express()
+fs = require('fs')
+https = require('https')
+http = require('http')
+credentials = 
+  key: fs.readFileSync("key.pem")
+  cert: fs.readFileSync("cert.pem")
+  passphrase: 'root'
 
 basic =auth.basic({
 	realm : "Simon Area.",
@@ -39,9 +46,12 @@ app.use('/static', express.static(__dirname+'/node_modules'))
 app.get '/toto', auth.connect(basic),(req,res) -> res.sendFile path.join __dirname+'/Public/views/index.html'
 app.get '/stat', (req,res) -> res.sendFile path.join __dirname+'/Public/views/stat.html'
 app.get '/get', get.test
-app.post '/json', get.createUser
+app.post '/json', get.createUser 
 app.get '/site', get.retrieve
 
 
 #Lancement du serveur
-app.listen app.get('port')
+httpServer = http.createServer(app);
+httpServer.listen(8080);
+httpsServer = https.createServer(credentials, app)
+httpsServer.listen (8000)

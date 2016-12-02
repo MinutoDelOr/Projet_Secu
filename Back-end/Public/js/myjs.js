@@ -11,8 +11,8 @@
   app.controller('FirstController', ['$http', '$scope', function($http,$scope){
 
       $scope.resFacebook = [];
-      $scope.resGoogle = [];
-      $scope.resAutres = [];
+      $scope.resAmazon = [];
+      $scope.resZimbra = [];
       this.tt = "aaaaaaaa";
       $http.get("http://127.0.0.1:8080/site")
       .then(function(response){
@@ -20,33 +20,80 @@
           if (typeof response.data[i].URL != 'undefined'){
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.resFacebook.push(response.data[i]);
-            } else if (response.data[i].URL.indexOf("google") !== -1){
-              $scope.resGoogle.push(response.data[i]);
+            } else if (response.data[i].URL.indexOf("amazon") !== -1){
+              $scope.resAmazon.push(response.data[i]);
             } else
-              $scope.resAutres.push(response.data[i]);
+              $scope.resZimbra.push(response.data[i]);
             } else i++;
         }
       });
   }]);
+
+  app.controller('DateController', ['$http', '$scope', '$filter', function($http,$scope,$filter){
+    $scope.myDate = new Date();
+    $scope.path = "static/img/Zimbra.png";
+    $scope.path1 = "static/img/fb.png";
+    $scope.path2 = "static/img/Amazon.png";
+    $scope.resDate = [];
+    $scope.resLogo = [];
+    $scope.data = {};
+    $scope.data.cb1 = true;
+    $scope.data.cb2 = true;
+    $scope.data.cb3 = true;
+
+    $scope.tri = function() {
+      $scope.resDate = [];
+      $scope.resLogo = [];
+      $http.get("http://127.0.0.1:8080/site")
+      .then(function(response){
+        for(var i = 0; i < response.data.length; i++) {
+          if (typeof response.data[i].URL != 'undefined'){
+            response.data[i].date = response.data[i].date.split("T")[0];
+            $scope.dd = $filter('date')($scope.myDate, "yyyy-MM-dd");
+            if(response.data[i].date.indexOf($scope.dd.toString()) > -1){
+              if(response.data[i].URL.indexOf("facebook") > -1 && $scope.data.cb1 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path1);
+              }
+              if(response.data[i].URL.indexOf("amazon") > -1 && $scope.data.cb2 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path2);
+              }
+              if(response.data[i].URL.indexOf("insa") > -1 && $scope.data.cb3 == true){
+                $scope.resDate.push(response.data[i]);
+                $scope.resLogo.push($scope.path);
+              }
+            }
+          }
+        }
+      });
+
+    };
+
+  }]);
+
+
+
 
   app.controller('SiteController', ['$http', '$scope', function($http,$scope){
 
       $scope.joursFB = [];
       $scope.nbFB = [];
 
-      $scope.joursGoogle = [];
-      $scope.nbGoogle = [];
+      $scope.joursAmazon = [];
+      $scope.nbAmazon = [];
 
-      $scope.joursAutres = [];
-      $scope.nbAutres = [];
+      $scope.joursZimbra = [];
+      $scope.nbZimbra = [];
 
       $scope.joursAll = [];
       $scope.nbAll = [];
 
       $scope.ctx1 = document.getElementById("myChart1");
       $scope.ctxf = document.getElementById("myChart2");
-      $scope.ctxg= document.getElementById("myChart3");
+      $scope.ctxA= document.getElementById("myChart3");
       $scope.ctAutres= document.getElementById("myChart4");
+      $scope.ctxZ= document.getElementById("myChartZ");
 
       $http.get("http://127.0.0.1:8080/site")
       .then(function(response){
@@ -77,25 +124,42 @@
                 
               }
             }
-
-            if ((response.data[i].URL).indexOf("google") !== -1){
+            if ((response.data[i].URL).indexOf("insa-lyon") !== -1){
               $scope.date = response.data[i].date.split('T')[0].split("-");
-              $scope.dateg = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
-              if($scope.joursGoogle.indexOf($scope.dateg) >= 0){
-                $scope.nbGoogle[$scope.joursGoogle.indexOf($scope.dateg)] = $scope.nbGoogle[$scope.joursGoogle.indexOf($scope.dateg)] + 1;
+              $scope.dateZ = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+              
+              if($scope.joursZimbra.indexOf($scope.dateZ) >= 0){
+                $scope.nbFB[$scope.joursZimbra.indexOf($scope.dateZ)] = $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] + 1;
+                
+              }
+              else{
+                $scope.joursZimbra.push($scope.dateZ);
+                $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] = 1;
+                
+                
+              }
+            }
+
+            if ((response.data[i].URL).indexOf("amazon") !== -1){
+              $scope.date = response.data[i].date.split('T')[0].split("-");
+              $scope.dateA = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+
+              if($scope.joursAmazon.indexOf($scope.datef) >= 0){
+                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] + 1;
                            
               }
               else{
-                $scope.joursGoogle.push($scope.dateg);
-                $scope.nbGoogle[$scope.joursGoogle.indexOf($scope.dateg)] = 1;
-                console.log($scope.dateg);
+                $scope.joursAmazon.push($scope.dateA);
+                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = 1;
+                console.log($scope.dateA);
                 
               }
             
 
-              }
 
-            if ((response.data[i].URL).indexOf("google") === -1 && (response.data[i].URL).indexOf("facebook") === -1)  {
+              
+
+            if ((response.data[i].URL).indexOf("amazon") === -1 && (response.data[i].URL).indexOf("zimbra") === -1)  {
                 $scope.date = response.data[i].date.split('T')[0].split("-");
                 $scope.dateAu = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
                 if($scope.joursAutres.indexOf($scope.dateAu) >= 0){
@@ -115,6 +179,7 @@
 
 
             }
+          }
           }
           
           
@@ -160,6 +225,19 @@
           }
         ]
       };
+      $scope.donneesZ = {
+        labels: $scope.joursZimbra,
+        datasets: [
+          {
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            fill: true,
+            spanGaps: false,
+            lineTension: 0.1,
+            data: $scope.nbZimbra
+          }
+        ]
+      };
       $scope.donneesAutres = {
         labels: $scope.joursAutres,
         datasets: [
@@ -174,8 +252,8 @@
         ]
       };
 
-      $scope.donneesg = {
-        labels: $scope.joursGoogle,
+      $scope.donneesA = {
+        labels: $scope.joursAmazon,
         datasets: [
           {
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -183,7 +261,7 @@
             fill: true,
             spanGaps: false,
             lineTension: 0.1,
-            data: $scope.nbGoogle
+            data: $scope.nbAmazon
           }
         ]
       };
@@ -206,6 +284,11 @@ $scope.myBarChart = new Chart($scope.ctxf, {
         data: $scope.donneesfb,
         options: $scope.option
       });
+$scope.myBarChart = new Chart($scope.ctxZ, {
+        type: 'line',
+        data: $scope.donneesZ,
+        options: $scope.option
+      });
 //charte pour tous les sites 
 $scope.myBarChart = new Chart($scope.ctx1, {
         type: 'line',
@@ -213,10 +296,10 @@ $scope.myBarChart = new Chart($scope.ctx1, {
         options: $scope.option
       });
 
-// chart google
-$scope.myBarChartg = new Chart($scope.ctxg, {
+// chart Amazon
+$scope.myBarChartA = new Chart($scope.ctxA, {
         type: 'line',
-        data: $scope.donneesg,
+        data: $scope.donneesA,
         options: $scope.option
       });
 
@@ -233,7 +316,7 @@ $scope.myBarChartAutres = new Chart($scope.ctAutres, {
 
   app.controller('ChartController', ['$http', '$scope', function($http,$scope){
       $scope.nbIdentifiants = [0,0,0];
-      $scope.sites = ["Facebook", "Google", "Autres"];
+      $scope.sites = ["Facebook", "Amazon", "Zimbra"];
       $scope.background_color = ['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)'];
       $scope.border_color = ['rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)'];
       $scope.ctx = document.getElementById("myChart");
@@ -244,7 +327,7 @@ $scope.myBarChartAutres = new Chart($scope.ctAutres, {
           if (typeof response.data[i].URL != 'undefined'){
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.nbIdentifiants[0] = $scope.nbIdentifiants[0] + 1;
-            } else if (response.data[i].URL.indexOf("google") !== -1){
+            } else if (response.data[i].URL.indexOf("amazon") !== -1){
               $scope.nbIdentifiants[1] = $scope.nbIdentifiants[1] + 1;
             } else
             $scope.nbIdentifiants[2] = $scope.nbIdentifiants[2] + 1;
@@ -314,8 +397,9 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     $scope.toggleLeft = buildDelayedToggler('left');
 
 
-    function change_pages(){
-       }  
+    function change_tabs(){
+
+    }
 
     function debounce(func, wait, context) {
        var timer;
