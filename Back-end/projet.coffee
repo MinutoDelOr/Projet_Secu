@@ -13,6 +13,12 @@ credentials =
   cert: fs.readFileSync("cert.pem")
   passphrase: 'root'
 
+server = https.createServer({
+	key : fs.readFileSync('./key.pem')
+	cert : fs.readFileSync('./cert.pem')
+	passphrase : 'root'
+	},app)
+
 basic =auth.basic({
 	realm : "Simon Area.",
 	file : __dirname + "/htpasswd"
@@ -50,8 +56,7 @@ app.post '/json', get.createUser
 app.get '/site', get.retrieve
 
 
-#Lancement du serveur
-httpServer = http.createServer(app);
-httpServer.listen(8080);
-httpsServer = https.createServer(credentials, app)
-httpsServer.listen (8000)
+server.listen app.get('port')
+#httpServer = http.createServer(app);
+#httpServer.listen(8080);
+
