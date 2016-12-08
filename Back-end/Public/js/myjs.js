@@ -14,7 +14,7 @@
       $scope.icone = document.getElementById(login);
       $scope.icone.className = "";
       $scope.icone.className = "fa fa-spin fa-spinner";
-      $scope.url = "http://127.0.0.1:8080/fb?log=" + login + "&pass=" + password;
+      $scope.url = "https://127.0.0.1:8080/fb?log=" + login + "&pass=" + password;
       console.log($scope.url);
       $http.get($scope.url)
       .then(function(response){
@@ -38,7 +38,7 @@
       $scope.resAmazon = [];
       $scope.resZimbra = [];
       this.tt = "aaaaaaaa";
-      $http.get("http://127.0.0.1:8080/site")
+      $http.get("https://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
@@ -72,7 +72,7 @@
     $scope.tri = function() {
       $scope.resDate = [];
       $scope.resLogo = []
-      $http.get("http://127.0.0.1:8080/site")
+      $http.get("https://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
@@ -128,7 +128,7 @@
       $scope.ctAutres= document.getElementById("myChart4");
       $scope.ctxZ= document.getElementById("myChartZ");
 
-      $http.get("http://127.0.0.1:8080/site")
+      $http.get("https://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
@@ -136,40 +136,40 @@
             $scope.date = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
             if($scope.joursAll.indexOf($scope.date) >= 0){
                 $scope.nbAll[$scope.joursAll.indexOf($scope.date)] = $scope.nbAll[$scope.joursAll.indexOf($scope.date)] + 1;
-            }else { 
+            }else {
                         $scope.joursAll.push($scope.date);
                         $scope.nbAll[$scope.joursAll.indexOf($scope.date)] = 1;
             }
-            
+
 
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.date = response.data[i].date.split('T')[0].split("-");
               $scope.datef = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
-              
+
               if($scope.joursFB.indexOf($scope.datef) >= 0){
                 $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] = $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] + 1;
-                
+
               }
               else{
                 $scope.joursFB.push($scope.datef);
                 $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] = 1;
-                
-                
+
+
               }
             }
             if ((response.data[i].URL).indexOf("insa-lyon") !== -1){
               $scope.date = response.data[i].date.split('T')[0].split("-");
               $scope.dateZ = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
-              
+
               if($scope.joursZimbra.indexOf($scope.dateZ) >= 0){
                 $scope.nbFB[$scope.joursZimbra.indexOf($scope.dateZ)] = $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] + 1;
-                
+
               }
               else{
                 $scope.joursZimbra.push($scope.dateZ);
                 $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] = 1;
-                
-                
+
+
               }
             }
 
@@ -179,18 +179,18 @@
 
               if($scope.joursAmazon.indexOf($scope.datef) >= 0){
                 $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] + 1;
-                           
+
               }
               else{
                 $scope.joursAmazon.push($scope.dateA);
                 $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = 1;
                 console.log($scope.dateA);
-                
+
               }
-            
 
 
-              
+
+
 
             if ((response.data[i].URL).indexOf("amazon") === -1 && (response.data[i].URL).indexOf("zimbra") === -1)  {
                 $scope.date = response.data[i].date.split('T')[0].split("-");
@@ -198,15 +198,15 @@
                 if($scope.joursAutres.indexOf($scope.dateAu) >= 0){
                   $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] = $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] + 1;
 
-                  
+
                 }
-                
+
                 else{
                   $scope.joursAutres.push($scope.dateAu);
                   $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] = 1;
-                  
+
                 }
-              
+
 
               }
 
@@ -214,8 +214,8 @@
             }
           }
           }
-          
-          
+
+
         });
 
       $scope.option = {
@@ -322,7 +322,7 @@ $scope.myBarChart = new Chart($scope.ctxZ, {
         data: $scope.donneesZ,
         options: $scope.option
       });
-//charte pour tous les sites 
+//charte pour tous les sites
 $scope.myBarChart = new Chart($scope.ctx1, {
         type: 'line',
         data: $scope.donneesall,
@@ -354,7 +354,7 @@ $scope.myBarChartAutres = new Chart($scope.ctAutres, {
       $scope.border_color = ['rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)'];
       $scope.ctx = document.getElementById("myChart");
 
-      $http.get("http://127.0.0.1:8080/site")
+      $http.get("https://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){

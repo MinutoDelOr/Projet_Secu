@@ -17,7 +17,7 @@
         <script src="static/js/mysecondjs.js"></script>
         <script src="static/chart.js/dist/Chart.min.js"></script>
         <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css"></script>
-
+        <link rel="icon" type="image/png" href="static/img/icone.png" />
 
     </head>
 
@@ -36,16 +36,16 @@
   <md-content ng-controller="LeftCtrl" style="background: rgb(63,81,181); text-align: left;">
 
     <md-toolbar id="item_menu" >
-      <span onclick= "window.location.href = '#'"; id="text_menu">Statistics general</span>
+      <span onclick= "window.location.href = '#'"; id="text_menu">Identifiants récupérés</span>
     </md-toolbar>
 
     <md-toolbar id="item_menu">
-      <span onclick= "window.location.href = 'stat'"; id="text_menu">Statistics per website</span>
+      <span onclick= "window.location.href = 'stat'"; id="text_menu">Statistiques et graphes</span>
     </md-toolbar>
 
 
     <md-button ng-click="close()" id="menu_button" class="md-raised md-primary">
-      Close Menu
+      Fermer
     </md-button>
   </md-content>
 </md-sidenav>
@@ -61,13 +61,7 @@
         <h2>
           <span>Keylogger results </span>
         </h2>
-        <span flex=""></span>
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-        </md-button>
+
       </div>
     </md-toolbar>
   </md-content>

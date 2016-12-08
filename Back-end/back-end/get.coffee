@@ -68,7 +68,6 @@ exports.fbConnect = (req, res) ->
     ph.createPage().then (page) ->
       try
         page.setting.userAgent = "mozilla/5.0 (x11; linux x86_64) applewebkit/537.36 (khtml, like gecko) chrome/54.0.2840.59 safari/537.36"
-        console.log  page.setting.userAgent
       catch err
         console.log err.message
       page.open('https://www.facebook.com').then (status) ->
@@ -87,7 +86,7 @@ exports.fbConnect = (req, res) ->
           try
             page.property('content').then (content) ->
               if content.indexOf('Se connecter à Facebook') > -1
-                console.log 'aa'
+                console.log 'Connexion échouée : erreur d\'identifiants'
                 res.send("false")
                 page.open('https://www.facebook.com').then (status) ->
                   console.log "redirect page accueil"
@@ -95,7 +94,7 @@ exports.fbConnect = (req, res) ->
                   ph.exit()
                   return
               else
-                console.log 'bb'
+                console.log 'Connexion réussie : identifiants valides'
                 res.send("true")
                 page.evaluate(->
                   try
@@ -115,7 +114,7 @@ exports.fbConnect = (req, res) ->
                     catch err
                       console.log err.message
                     setTimeout (->
-                      console.log "logout"
+                      console.log "Déconnexion"
                       page.close()
                       ph.exit()
                       return
