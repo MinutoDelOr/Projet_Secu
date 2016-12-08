@@ -72,20 +72,59 @@
     <div ng-cloak="" class="tabsdemoDynamicHeight" ng-controller="FirstController as ctrl" ng-show="true">
         <md-content>
           <md-tabs md-dynamic-height="" md-border-bottom="">
-            
-            <md-tab label="stat">
+            <md-tab label="Tous">
               <md-content class="md-padding">
-                <div ng-controller="ChartController as chart" style="width: 50%; height: auto;" >
-                  <canvas id="myChart" width="100" height="100"></canvas>
-                            </br>
+              <div layout="row">
+                
+                  <div flex=50 ng-controller="ChartController as chart" style="width: 50%; margin-left: auto; margin-right: auto;height: auto;" >
+                    
+                  <canvas id="myChart"  ></canvas>
+                  </div>
+                <hr>
+                  <div flex=50 ng-controller="SiteController as chart" style="width: 50%; margin-left: auto; margin-right: auto;height: auto;" >
+                    
+                  <canvas id="myChart1"  ></canvas>
                 </div>
-                <div ng-controller="SiteController as chart" style="width: 50%; height: auto;" >
-                  <canvas id="myChart1" width="100" height="100"></canvas>
-                            </br>
-                  <canvas id="myChart2" width="100" height="100"></canvas>
-                </div>
+              <hr>
+              </div>
               </md-content>
             </md-tab>
+
+            <md-tab label="Facebook">
+              <md-content class="md-padding">
+              <div layout="row">
+                  <div flex=50 ng-controller="SiteController as chart" style="width: 50%; margin-left: auto; margin-right: auto;height: auto;" >
+                    
+                  <canvas id="myChart2"  ></canvas>
+                  </div>
+              </div>
+              </md-content>
+            </md-tab>
+
+            <md-tab label="Amazon">
+              <md-content class="md-padding">
+              <div layout="row">
+                  <div flex=50 ng-controller="SiteController as chart" style="width: 50%; margin-left: auto; margin-right: auto;height: auto;" >
+                    
+                  <canvas id="myChart3"  ></canvas>
+                  </div>
+              </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Zimbra">
+              <md-content class="md-padding">
+              <div layout="row">
+                  <div flex=50 ng-controller="SiteController as chart" style="width: 50%; margin-left: auto; margin-right: auto;height: auto;" >
+                    
+                  <canvas id="myChartZ"  ></canvas>
+                  </div>
+              </div>
+              </md-content>
+            </md-tab>
+
+
+            
+          </md-tabs>
 
       </div>
     </body>

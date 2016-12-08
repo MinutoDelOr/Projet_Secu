@@ -119,40 +119,104 @@
       $scope.joursZimbra = [];
       $scope.nbZimbra = [];
 
-      $scope.ctx = document.getElementById("myChart1");
-      $scope.ctxg = document.getElementById("myChart2");
+      $scope.joursAll = [];
+      $scope.nbAll = [];
+
+      $scope.ctx1 = document.getElementById("myChart1");
+      $scope.ctxf = document.getElementById("myChart2");
+      $scope.ctxA= document.getElementById("myChart3");
+      $scope.ctAutres= document.getElementById("myChart4");
+      $scope.ctxZ= document.getElementById("myChartZ");
 
       $http.get("http://127.0.0.1:8080/site")
       .then(function(response){
         for(var i = 0; i < response.data.length; i++) {
           if (typeof response.data[i].URL != 'undefined'){
+            $scope.date = response.data[i].date.split('T')[0].split("-");
+            $scope.date = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+            if($scope.joursAll.indexOf($scope.date) >= 0){
+                $scope.nbAll[$scope.joursAll.indexOf($scope.date)] = $scope.nbAll[$scope.joursAll.indexOf($scope.date)] + 1;
+            }else { 
+                        $scope.joursAll.push($scope.date);
+                        $scope.nbAll[$scope.joursAll.indexOf($scope.date)] = 1;
+            }
+            
+
             if ((response.data[i].URL).indexOf("facebook") !== -1){
               $scope.date = response.data[i].date.split('T')[0].split("-");
-              $scope.date = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
-              if($scope.joursFB.indexOf($scope.date) >= 0){
-                $scope.nbFB[$scope.joursFB.indexOf($scope.date)] = $scope.nbFB[$scope.joursFB.indexOf($scope.date)] + 1;
+              $scope.datef = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+              
+              if($scope.joursFB.indexOf($scope.datef) >= 0){
+                $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] = $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] + 1;
+                
               }
               else{
-                $scope.joursFB.push($scope.date);
-                $scope.nbFB[$scope.joursFB.indexOf($scope.date)] = 1;
+                $scope.joursFB.push($scope.datef);
+                $scope.nbFB[$scope.joursFB.indexOf($scope.datef)] = 1;
+                
+                
+              }
+            }
+            if ((response.data[i].URL).indexOf("insa-lyon") !== -1){
+              $scope.date = response.data[i].date.split('T')[0].split("-");
+              $scope.dateZ = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+              
+              if($scope.joursZimbra.indexOf($scope.dateZ) >= 0){
+                $scope.nbFB[$scope.joursZimbra.indexOf($scope.dateZ)] = $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] + 1;
+                
+              }
+              else{
+                $scope.joursZimbra.push($scope.dateZ);
+                $scope.nbZimbra[$scope.joursZimbra.indexOf($scope.dateZ)] = 1;
+                
+                
               }
             }
 
             if ((response.data[i].URL).indexOf("amazon") !== -1){
               $scope.date = response.data[i].date.split('T')[0].split("-");
-              $scope.dateg = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
-              if($scope.joursAmazon.indexOf($scope.dateg) >= 0){
-                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateg)] = $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateg)] + 1;
+              $scope.dateA = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+
+              if($scope.joursAmazon.indexOf($scope.datef) >= 0){
+                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] + 1;
+                           
               }
               else{
-                $scope.joursAmazon.push($scope.dateg);
-                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateg)] = 1;
+                $scope.joursAmazon.push($scope.dateA);
+                $scope.nbAmazon[$scope.joursAmazon.indexOf($scope.dateA)] = 1;
+                console.log($scope.dateA);
+                
               }
-            }
+            
 
+
+              
+
+            if ((response.data[i].URL).indexOf("amazon") === -1 && (response.data[i].URL).indexOf("zimbra") === -1)  {
+                $scope.date = response.data[i].date.split('T')[0].split("-");
+                $scope.dateAu = $scope.date[2] +"/" + $scope.date[1] + "/" + $scope.date[0].split('0')[1];
+                if($scope.joursAutres.indexOf($scope.dateAu) >= 0){
+                  $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] = $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] + 1;
+
+                  
+                }
+                
+                else{
+                  $scope.joursAutres.push($scope.dateAu);
+                  $scope.nbAutres[$scope.joursAutres.indexOf($scope.dateAu)] = 1;
+                  
+                }
+              
+
+              }
+
+
+            }
           }
-        }
-      });
+          }
+          
+          
+        });
 
       $scope.option = {
         title: {
@@ -194,8 +258,34 @@
           }
         ]
       };
+      $scope.donneesZ = {
+        labels: $scope.joursZimbra,
+        datasets: [
+          {
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            fill: true,
+            spanGaps: false,
+            lineTension: 0.1,
+            data: $scope.nbZimbra
+          }
+        ]
+      };
+      $scope.donneesAutres = {
+        labels: $scope.joursAutres,
+        datasets: [
+          {
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            fill: true,
+            spanGaps: false,
+            lineTension: 0.1,
+            data: $scope.nbAutres
+          }
+        ]
+      };
 
-      $scope.donneesg = {
+      $scope.donneesA = {
         labels: $scope.joursAmazon,
         datasets: [
           {
@@ -208,16 +298,48 @@
           }
         ]
       };
-
-$scope.myBarChart = new Chart($scope.ctx, {
+      $scope.donneesall = {
+        labels: $scope.joursAll,
+        datasets: [
+          {
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            fill: true,
+            spanGaps: false,
+            lineTension: 0.1,
+            data: $scope.nbAll
+          }
+        ]
+      };
+//Charte facebook
+$scope.myBarChart = new Chart($scope.ctxf, {
         type: 'line',
         data: $scope.donneesfb,
         options: $scope.option
       });
-
-$scope.myBarChartg = new Chart($scope.ctxg, {
+$scope.myBarChart = new Chart($scope.ctxZ, {
         type: 'line',
-        data: $scope.donneesg,
+        data: $scope.donneesZ,
+        options: $scope.option
+      });
+//charte pour tous les sites 
+$scope.myBarChart = new Chart($scope.ctx1, {
+        type: 'line',
+        data: $scope.donneesall,
+        options: $scope.option
+      });
+
+// chart Amazon
+$scope.myBarChartA = new Chart($scope.ctxA, {
+        type: 'line',
+        data: $scope.donneesA,
+        options: $scope.option
+      });
+
+
+$scope.myBarChartAutres = new Chart($scope.ctAutres, {
+        type: 'line',
+        data: $scope.donneesAutres,
         options: $scope.option
       });
 
@@ -286,6 +408,15 @@ $scope.myBarChartg = new Chart($scope.ctxg, {
       };
 
       $scope.myBarChart = new Chart($scope.ctx, {
+        type: 'bar',
+        data: $scope.donnees,
+       options: $scope.option
+      });
+
+//chare google id/jours
+
+$scope.ctxxx = document.getElementById("myChart4");
+$scope.myBarChart = new Chart($scope.ctxxx, {
         type: 'bar',
         data: $scope.donnees,
         options: $scope.option
