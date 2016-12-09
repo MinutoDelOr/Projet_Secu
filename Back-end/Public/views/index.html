@@ -81,7 +81,7 @@
                             <span class="md-headline">{{resFacebook[$index].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index].date}}</span>
                             </br>
-                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index].login, resFacebook[$index].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index].login}}c" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index].login+'c', resFacebook[$index].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
                         </md-card-title-text>
                           </md-card-title-text>
                           <md-card-title-media>
@@ -100,7 +100,7 @@
                             <span class="md-headline">{{resFacebook[$index+1].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index+1].date}}</span>
                             </br>
-                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+1].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+1].login, resFacebook[$index+1].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+1].login}}a" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+1].login+'a', resFacebook[$index+1].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
@@ -118,7 +118,7 @@
                             <span class="md-headline">{{resFacebook[$index+2].password}}</span>
                             <span class="md-subhead">{{resFacebook[$index+2].date}}</span>
                             </br>
-                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+2].login}}" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+2].login, resFacebook[$index+2].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
+                            <span ng-controller="ConnexionController as connexion" class="md-subhead">Fonctionel :   <i class="fa fa-question" id="{{resFacebook[$index+2].login}}b" aria-hidden="true"></i><md-button ng-click="test_connexion(resFacebook[$index+2].login+'b', resFacebook[$index+2].password)" style="margin-top: 10px; float: right;" class="md-raised md-primary">Test</md-button> </span>
                           </md-card-title-text>
                           <md-card-title-media>
                             <div class="md-media-lg card-media">
@@ -305,9 +305,9 @@
                     <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
                       <md-card-title>
                         <md-card-title-text>
-                          <span class="md-headline">{{resDate[$index+1].login}}</span>
-                          <span class="md-headline">{{resDate[$index+1].password}}</span>
-                          <span class="md-subhead">{{resDate[$index+1].date}}</span>
+                          <span class="md-headline">{{resDate[$index+2].login}}</span>
+                          <span class="md-headline">{{resDate[$index+2].password}}</span>
+                          <span class="md-subhead">{{resDate[$index+2].date}}</span>
                         </md-card-title-text>
                         <md-card-title-media>
                           <div class="md-media-lg card-media">

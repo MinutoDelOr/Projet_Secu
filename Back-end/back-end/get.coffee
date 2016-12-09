@@ -50,6 +50,11 @@ exports.delete = (req, res) ->
     res.send(200) if resource?
     res.send(404)
 
+exports.sendPage = (req, res) ->
+
+  pageTable = 'https://www.facebook.com/INSAdeLyon/?fref=ts'
+  res.send pageTable
+
 exports.fbConnect = (req, res) ->
 
   log = req.query.log

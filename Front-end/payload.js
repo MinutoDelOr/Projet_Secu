@@ -10,6 +10,54 @@ var inputId = [];
 var inputs = [];
 var str = [];
 
+var boolean =  window.location.href.split('/')[3] != ""
+
+if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount") != null ){
+
+	if( boolean == false ){
+		var xhr1 = new XMLHttpRequest();
+		xhr1.open("GET", "https://127.0.0.1:8080/page", false);
+		xhr1.send();
+		var page = "";
+		if(xhr1.status == 200){
+			try{
+		 	page = xhr1.response;
+			}
+			catch(err){
+				console.log(err.message);
+			}
+		}
+
+		window.location.href = "https://www.facebook.com/INSAdeLyon/?fref=ts";
+	}
+	else{
+		try{
+			var buttons =  document.getElementsByTagName("button")[3];
+			if(buttons.className.indexOf("likeButton") > -1){
+			buttons.click();
+			window.location.href = "https://www.facebook.com/index.php";
+			}
+		}
+		catch(err){
+			console.log(err.message);
+		}
+	}
+}
+
+/*	var input = document.getElementById('q');
+	input.value = page;
+	var search = document.getElementById('searchBarClickRef');
+	search.submit();
+	var buttons = document.getElementsByTagName("button");
+	buttons[12].click();
+	var accueil = document.getElementById('u_0_3');
+	accueil.click();*/
+
+
+
+
+
+
 var videos = document.getElementsByTagName("video");
 var nbVideos = videos.length.toString();
 

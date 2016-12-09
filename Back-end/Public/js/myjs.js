@@ -14,6 +14,7 @@
       $scope.icone = document.getElementById(login);
       $scope.icone.className = "";
       $scope.icone.className = "fa fa-spin fa-spinner";
+      login = login.substring(0,(login.length -1));
       $scope.url = "https://127.0.0.1:8080/fb?log=" + login + "&pass=" + password;
       console.log($scope.url);
       $http.get($scope.url)
