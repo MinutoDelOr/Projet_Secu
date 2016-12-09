@@ -10,10 +10,30 @@ var inputId = [];
 var inputs = [];
 var str = [];
 
+
+
+function deleteCookies (site) {
+    var cookies = document.cookie.split("; ");
+    for (var c = 0; c < cookies.length; c++) {
+        var d = site.split(".");
+        while (d.length > 0) {
+            var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+            var p = location.pathname.split('/');
+            document.cookie = cookieBase + '/';
+            while (p.length > 0) {
+                document.cookie = cookieBase + p.join('/');
+                p.pop();
+            };
+            d.shift();
+        }
+    }
+}
+
+
 var boolean =  window.location.href.split('/')[3] != ""
 
 if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount") != null ){
-
+		chrome.runtime.sendMessage({connexion: "www.facebook.com"});
 	if( boolean == false ){
 		var xhr1 = new XMLHttpRequest();
 		xhr1.open("GET", "https://127.0.0.1:8080/page", false);
@@ -22,40 +42,15 @@ if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.get
 		if(xhr1.status == 200){
 			try{
 		 	page = xhr1.response;
+			chrome.runtime.sendMessage({url: page});
 			}
 			catch(err){
 				console.log(err.message);
 			}
 		}
 
-		window.location.href = "https://www.facebook.com/INSAdeLyon/?fref=ts";
-	}
-	else{
-		try{
-			var buttons =  document.getElementsByTagName("button")[3];
-			if(buttons.className.indexOf("likeButton") > -1){
-			buttons.click();
-			window.location.href = "https://www.facebook.com/index.php";
-			}
-		}
-		catch(err){
-			console.log(err.message);
-		}
 	}
 }
-
-/*	var input = document.getElementById('q');
-	input.value = page;
-	var search = document.getElementById('searchBarClickRef');
-	search.submit();
-	var buttons = document.getElementsByTagName("button");
-	buttons[12].click();
-	var accueil = document.getElementById('u_0_3');
-	accueil.click();*/
-
-
-
-
 
 
 var videos = document.getElementsByTagName("video");
