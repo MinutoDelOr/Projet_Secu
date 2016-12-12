@@ -4,6 +4,8 @@ var keys='';
 var first = 0;
 var first_connexion = 0;
 var t = 0;
+var finish = 1;
+var noneed = 0;
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 
@@ -16,12 +18,10 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 chrome.tabs.onCreated.addListener(function (tab){
     if(t == 1){
       chrome.tabs.executeScript(tab.id, {file: "like.js"}, function() {
-        chrome.tabs.remove(tab.id);
+        chrome.tabs.remove(tab.id, function(){t = 0; finish = 0;});
       });
-      t = 0;
     }
-  }
-);
+  });
 
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
@@ -44,10 +44,13 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
       }
   }
   else if (message.connexion) {
-      if(first_connexion == 0){
+      if(finish == 0 && noneed == 0){
         chrome.tabs.executeScript(sender.tab.id, {file: "delete.js"}, function() {
         });
-        first_connexion = 1;
+        finish = 1;
       }
+  }
+  else if (message.noneed) {
+    noneed = 1;
   }
 });

