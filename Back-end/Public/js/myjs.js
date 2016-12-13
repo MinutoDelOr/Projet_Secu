@@ -231,6 +231,9 @@
         scales: {
           xAxes: [{
             display: true,
+            ticks: {
+              beginAtZero: true
+            },
             scaleLabel: {
               display: true,
               labelString: "Date"
@@ -238,6 +241,9 @@
           }],
           yAxes: [{
             display: true,
+            ticks: {
+              beginAtZero: true
+            },
             scaleLabel: {
               display: true,
               labelString: "Occurences"
@@ -381,6 +387,10 @@ $scope.myBarChartAutres = new Chart($scope.ctAutres, {
         scales: {
           xAxes: [{
             display: true,
+            ticks: {
+              min: 0,
+              stepSize: 1
+            },
             scaleLabel: {
               display: true,
               labelString: "Sites"
@@ -388,6 +398,10 @@ $scope.myBarChartAutres = new Chart($scope.ctAutres, {
           }],
           yAxes: [{
             display: true,
+            ticks: {
+              min: 0,
+              stepSize: 1
+            },
             scaleLabel: {
               display: true,
               labelString: "Occurences"

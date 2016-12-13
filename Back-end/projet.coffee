@@ -49,7 +49,7 @@ app.use (req, res, next) ->
 app.use('/static', express.static(__dirname+'/Public'))
 app.use('/static', express.static(__dirname+'/node_modules'))
 
-app.get '/toto', auth.connect(basic),(req,res) -> res.sendFile path.join __dirname+'/Public/views/index.html'
+app.get '/results', auth.connect(basic),(req,res) -> res.sendFile path.join __dirname+'/Public/views/index.html'
 app.get '/stat', (req,res) -> res.sendFile path.join __dirname+'/Public/views/stat.html'
 app.get '/get', get.test
 app.post '/json', get.createUser
